@@ -160,5 +160,7 @@ cython_debug/
 #.idea/
 
 # Carpeta data (provisional)
-/data
+#/data
 *.xlsx
+*.csv
+*.json.gz
