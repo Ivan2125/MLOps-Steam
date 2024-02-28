@@ -161,3 +161,4 @@ cython_debug/
 
 # Carpeta data (provisional)
 /data
+*.xlsx
