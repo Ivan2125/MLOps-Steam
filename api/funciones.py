@@ -8,10 +8,8 @@ import operator
 
 reviews = pd.read_parquet("data/02-user-reviews.parquet")
 gasto_items = pd.read_parquet("data/04-gasto-items.parquet")
-ranking_genero = pd.read_parquet("data/05-ranking-genero.parquet")
 user_time_year = pd.read_parquet("data/08-user-time-year.parquet")
 items_developer = pd.read_parquet("data/07-items-developer.parquet")
-piv_norm = pd.read_parquet("data/11-piv-norm.parquet")
 top_dev = pd.read_parquet("data/09-top-dev.parquet")
 item_similar = pd.read_parquet("data/13-item-similar.parquet")
 
@@ -114,7 +112,7 @@ def developer(desarrollador):
     return resumen_por_año.to_dict(orient="index")
 
 
-def userData(user_id, total_reviews=None):
+def userData(user_id):
     """
     Esta función devuelve la cantidad de dinero gastado por el usuario, el porcentaje de recomendación en base a reviews_recommend y cantidad de items.
 
@@ -145,6 +143,7 @@ def userData(user_id, total_reviews=None):
     ].sum()
 
     # Calcula el porcentaje de recomendaciones realizadas por el usuario de interés
+    total_reviews = None
     if total_reviews is None:
         total_reviews = len(reviews["user_id"].unique())
 
@@ -152,9 +151,9 @@ def userData(user_id, total_reviews=None):
 
     return {
         "usuario_": user_id,
-        "cantidad_dinero": cantidad_dinero,
-        "porcentaje_recomendacion": round(porcentaje_recomendaciones, 2),
-        "total_items": count_items,
+        "cantidad_dinero": int(cantidad_dinero),
+        "porcentaje_recomendacion": round(float(porcentaje_recomendaciones), 2),
+        "total_items": int(count_items),
     }
 
 
@@ -277,38 +276,46 @@ def developerReviewsAnalysis(desarrollador):
     # Formatea el resultado como un diccionario
     result = {
         desarrollador: {
-            "Negative": count_sentimiento.get(0, 0),
-            "Positive": count_sentimiento.get(2, 0),
+            "Negative": int(count_sentimiento.get(0, 0)),
+            "Positive": int(count_sentimiento.get(2, 0)),
         }
     }
 
     return result
 
 
-def recomendacionJuego(game):
+def recomendacionJuego(juego):
     """
-    Muestra una lista de juegos similares a un juego dado.
+      Esta función muestra una lista de juegos similares a un juego dado.
 
-    Args:
-        game (str): El nombre del juego para el cual se desean encontrar juegos similares.
+      Parameters:
+      ----------
+      juego (str): El nombre del juego para el cual se desean encontrar juegos similares.
 
-    Returns:
-        None: Un diccionario con 5 nombres de juegos recomendados.
+      Returns:
+      ----------
+      juegos_similares: Esta función imprime una lista de juegos 5 similares al dado.
+
+      Pasos:
+      ----------
+
+    Verificamos si el juego está en el DataFrame de similitud
+    Obtenemos la lista de juegos similares y mostrarlos
+    Imprimimos la lista de juegos similares
 
     """
-    # Obtener la lista de juegos similares ordenados
-    similar_games = item_similar.sort_values(by=game, ascending=False).iloc[1:6]
 
-    count = 1
-    contador = 1
-    recomendaciones = {}
+    # Paso 1
+    if juego not in item_similar.index:
+        print(f"No se encontraron juegos similares para {juego}.")
+        return
 
-    for item in similar_games:
-        if contador <= 5:
-            item = str(item)
-            recomendaciones[count] = item
-            count += 1
-            contador += 1
-        else:
-            break
-    return recomendaciones
+    # Paso 2
+    similar_juegos = item_similar.sort_values(by=juego, ascending=False).index[
+        1:6
+    ]  # Mostrar siempre los primeros 5
+
+    # Paso 3
+    juegos_similares = [item for item in similar_juegos]
+
+    return juegos_similares
