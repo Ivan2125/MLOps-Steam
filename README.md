@@ -70,7 +70,7 @@ Crear una nueva columna, 'sentiment_analysis', aplicando análisis de sentimient
 ## Análisis Exploratorio de Datos (EDA)
 
 **Exploración Manual:**
-Realizar un EDA manual después del ETL para investigar las relaciones entre variables, identificar valores atípicos y descubrir patrones interesantes dentro del conjunto de datos, para esta tarea se utilizan diferentes librerías para hacer visualizaciones y medidas estadísticas. ["EDA"](02_EDA.ipynb)
+Realizar un EDA manual después del ETL para investigar las relaciones entre variables, identificar valores atípicos y descubrir patrones interesantes dentro del conjunto de datos, para esta tarea se utilizan diferentes librerías para hacer visualizaciones y medidas estadísticas. [EDA](https://github.com/Ivan2125/MLOps-Steam/blob/main/05-eda.ipynb)
 
 ## Feature Engineering
 
@@ -161,11 +161,16 @@ Para el deploy de la API se seleccionó la plataforma Render que es una nube uni
 - Se generó un servicio nuevo  en `render.com`, conectado al presente repositorio y utilizando Docker como Runtime.
 - Finalmente, el servicio queda corriendo en [https://repo-deploy.onrender.com](https://pi1-games.onrender.com/).
 
-Para el despliegue automático, Render utiliza GitHub y dado que el servicio gratuito cuenta con una limitada capacidad de almacenamiento, se realizó un repositorio exclusivo para el deploy, el cual se encuentra [aquí](https://github.com/Ivan2125/repo-Deploy).
+> [!NOTA]
+> Para el despliegue automático, Render utiliza GitHub y dado que el servicio gratuito cuenta con una limitada capacidad de almacenamiento, se realizó un repositorio exclusivo para el deploy, el cual se encuentra [aquí](https://github.com/Ivan2125/repo-Deploy).
 
 ## Video
 
 En este [link](https://drive.google.com/drive/folders/1Rtn0s5jHaqRaQkGpb4OSYTS4BpvOW-oF?usp=drive_link) se encuentra el video donde se explica brevemente el desarrollo del proyecto y el correcto funcionamiento de la API desplegada en el servicio web de Render.
+
+<p align="center">
+<img src="images/MLOps.gif" alt="T">
+</p>
 
 ## Conclusión
 
