@@ -159,7 +159,7 @@ Para el deploy de la API se seleccionó la plataforma Render que es una nube uni
 
 - Generación de un Dockerfile cuya imagen es Python 3.11.8. Se puede ver el detalle del documento [Dockerfile](https://github.com/Ivan2125/MLOps-Steam/blob/main/Dockerfile).
 - Se generó un servicio nuevo  en `render.com`, conectado al presente repositorio y utilizando Docker como Runtime.
-- Finalmente, el servicio queda corriendo en [https://repo-deploy.onrender.com](https://pi1-games.onrender.com/).
+- Finalmente, el servicio queda corriendo en [https://repo-deploy.onrender.com](https://repo-deploy.onrender.com/).
 
 > [!NOTE]
 > Para el despliegue automático, Render utiliza GitHub y dado que el servicio gratuito cuenta con una limitada capacidad de almacenamiento, se realizó un repositorio exclusivo para el deploy, el cual se encuentra [aquí](https://github.com/Ivan2125/repo-Deploy).
