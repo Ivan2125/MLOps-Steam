@@ -149,7 +149,7 @@ En caso de querer ejecutar la API desde localHost se deben seguir los siguientes
 
 | Nombre                            | Archivo                               |
 |-----------------------------------|---------------------------------------|
-| Modelo de recomendación                       | 04-gasto-items.parquet    |
+| Modelo de recomendación           | 07-modelo_recomendacion.ipynb         |
 
 **Integración con la API:** Se aseguró que las recomendaciones del modelo puedan accederse a través de un endpoint API GET/POST, como `recomendacionJuego(item : str)`.
 
